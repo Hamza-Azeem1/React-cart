@@ -29,7 +29,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!name) {
-      showAlert(true, 'danger', 'please enter value')
+      showAlert(true, 'danger', 'please enter some task')
     }
     else if (name && isEditing) {
       setList(list.map((item) => {
@@ -41,10 +41,10 @@ function App() {
       setName('');
       setEditID(null);
       setIsEditing(false);
-      showAlert(true, 'success', 'item edited')
+      showAlert(true, 'success', 'Task updated')
     }
     else {
-      showAlert(true, 'success', 'item added to the list')
+      showAlert(true, 'success', 'Task added to the list')
       const newItem = { id: new Date().getTime().toString(), title: name };
       setList([...list, newItem]);
       setName('')
@@ -61,7 +61,7 @@ function App() {
   }
 
   const removeItem = (id) => {
-    showAlert(true, 'danger', 'item removed')
+    showAlert(true, 'danger', 'Task removed')
     setList(list.filter((item) => item.id !== id))
 
   }
@@ -98,7 +98,7 @@ function App() {
         <div className='grocery-container'>
           <List items={list} removeItem={removeItem} editItem={editItem} />
           <button className='clear-btn' onClick={clearList}>
-            clear items
+            clear Task List
           </button>
         </div>
       )}
